@@ -1,0 +1,30 @@
+library IEEE;
+use IEEE.STD_LOGIC_1164.ALL;
+use IEEE.STD_LOGIC_ARITH.ALL;
+use IEEE.STD_LOGIC_UNSIGNED.ALL;
+
+entity four_to_one_mux is
+    Port ( a, b, c, d : in STD_LOGIC;
+           S0, s1: in STD_LOGIC;
+           z: out STD_LOGIC);
+end four_to_one_mux;
+
+architecture Behavioral of four_to_one_mux is
+
+begin
+
+process(a, b, c, d, s0, s1)
+begin
+if (s0 = '0' and s1 = '0') then
+z <= a;
+elsif (s0 = '1' and s1 = '0') then
+z <= b;
+elsif (s0 = '0' and s1 = '1') then
+z <= c;
+else
+z <= d;
+end if;
+end process;
+
+end Behavioral;
+

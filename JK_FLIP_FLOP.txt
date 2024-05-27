@@ -1,0 +1,34 @@
+library IEEE;
+use IEEE.STD_LOGIC_1164.ALL;
+use IEEE.STD_LOGIC_ARITH.ALL;
+use IEEE.STD_LOGIC_UNSIGNED.ALL;
+
+entity jk_flip_flop is
+    Port ( J, K, CLOCK : in STD_LOGIC;
+           Q, QBAR: out STD_LOGIC);
+end jk_flip_flop;
+
+architecture Behavioral of jk_flip_flop is
+
+begin
+
+process(CLOCK)
+variable TMP: std_logic;
+begin
+if (CLOCK = '1' and CLOCK'EVENT) then
+if (J = '0' and K = '0') then
+TMP:=TMP;
+elsif (J = '1' and K = '1') then
+TMP:= not TMP;
+elsif (J = '0' and K = '1') then
+TMP:='0';
+else
+TMP:='1';
+end if;
+end if;
+Q <= TMP;
+QBAR <= not TMP;
+end process;
+
+end Behavioral;
+

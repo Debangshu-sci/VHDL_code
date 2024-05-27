@@ -1,0 +1,27 @@
+library IEEE;
+use IEEE.STD_LOGIC_1164.ALL;
+use IEEE.STD_LOGIC_ARITH.ALL;
+use IEEE.STD_LOGIC_UNSIGNED.ALL;
+
+entity t_flip_flop is
+    Port ( T, CLOCK : in STD_LOGIC;
+           Q : inout STD_LOGIC:='0');
+end t_flip_flop;
+
+architecture Behavioral of t_flip_flop is
+
+begin
+
+process(CLOCK)
+begin
+if (CLOCK'EVENT and CLOCK = '0') then
+if (T = '0') then
+Q <= Q;
+else
+Q <= not Q;
+end if;
+end if;
+end process;
+
+end Behavioral;
+

@@ -1,0 +1,34 @@
+library IEEE;
+use IEEE.STD_LOGIC_1164.ALL;
+use IEEE.STD_LOGIC_ARITH.ALL;
+use IEEE.STD_LOGIC_UNSIGNED.ALL;
+
+entity sr_flip_flop is
+    Port ( S, R, CLOCK : in STD_LOGIC;
+           Q, QBAR: out STD_LOGIC);
+end sr_flip_flop;
+
+architecture Behavioral of sr_flip_flop is
+
+begin
+
+process(CLOCK)
+variable tmp: std_logic;
+begin
+if (CLOCK = '1' and CLOCK'EVENT) then
+if (S = '0' and R = '0') then
+tmp:=tmp;
+elsif (S = '1' and R = '1') then
+tmp:='Z';
+elsif (S = '0' and R = '1') then
+tmp:='0';
+else
+tmp:='1';
+end if;
+end if;
+Q <= tmp;
+QBAR <= not tmp;
+end process;
+
+end Behavioral;
+

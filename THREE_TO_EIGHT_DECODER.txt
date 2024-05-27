@@ -1,0 +1,31 @@
+library IEEE;
+use IEEE.STD_LOGIC_1164.ALL;
+use IEEE.STD_LOGIC_ARITH.ALL;
+use IEEE.STD_LOGIC_UNSIGNED.ALL;
+
+entity three_to_eight_decoder is
+    Port ( a : in STD_LOGIC_VECTOR(2 downto 0);
+	   b : out STD_LOGIC_VECTOR(7 downto 0);
+end three_to_eight_decoder;
+
+architecture Behavioral of three_to_eight_decoder is
+
+begin
+
+process(a)
+begin
+case a is
+when "000" => b <= "00000001";
+when "001" => b <= "00000010";
+when "010" => b <= "00000100";
+when "011" => b <= "00001000";
+when "100" => b <= "00010000";
+when "101" => b <= "00100000";
+when "110" => b <= "01000000";
+when "111" => b <= "10000000";
+when others => b <= "00000000";
+end case;
+end process;
+
+end Behavioral;
+
